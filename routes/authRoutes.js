@@ -15,3 +15,10 @@ module.exports = app => {
     })
   );
 };
+
+
+
+// module.exports = router;
+// router.post('/users/create',    usersController.create);
+// router.get('/users',    usersController.showUser);
+// router.post('/users/auth',    usersController.authenticate);
