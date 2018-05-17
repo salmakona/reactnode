@@ -9,16 +9,38 @@ module.exports = app => {
   // the callback after google has authenticated the user
   app.get(
     '/auth/google/callback',
-    passport.authenticate('google', {
-      successRedirect: '/profile',
-      failureRedirect: '/'
-    })
+       passport.authenticate('google'),
+      (req, res) => {
+        res.redirect('/surveys');
+      }
   );
+
+  app.get('/api/logout', (req, res) => {
+    req.logout();
+    res.redirect('/');
+  });
 };
 
 
+// module.exports = app => {
+//   app.get(
+//     '/auth/google',
+//     passport.authenticate('google', {
+//       scope: ['profile', 'email']
+//     })
+//   );
 
-// module.exports = router;
-// router.post('/users/create',    usersController.create);
-// router.get('/users',    usersController.showUser);
-// router.post('/users/auth',    usersController.authenticate);
+//   app.get(
+//     '/auth/google/callback',
+//     passport.authenticate('google'),
+//     (req, res) => {
+//       res.redirect('/surveys');
+//     }
+//   );
+
+
+
+//   app.get('/api/current_user', (req, res) => {
+//     res.send(req.user);
+//   });
+// };
