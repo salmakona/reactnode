@@ -7,18 +7,18 @@ var session      = require('express-session');
 const passport = require('passport');
 require('./models/User');
 require('./services/passport');
-mongoose.Promise = global.Promise;
-mongoose.connect(keys.mongoURI);
 
+// mongoose.Promise = global.Promise;
+// mongoose.connect(keys.mongoURI);
 //const authRoutes = require('./routes/authRoutes');
 
-mongoose.Promise = global.Promise;
+//mongoose.Promise = global.Promise;
 // mongoose.connect(keys.mongoURI);
 
-mongoose.createConnection(
-  'mongodb://localhost/book'
-);
-
+// mongoose.createConnection(
+//   'mongodb://localhost/book'
+// );
+require('./models/db');
 const app = express();
 app.use(bodyParser.json());
 app.use(
