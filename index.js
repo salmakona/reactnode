@@ -18,7 +18,7 @@ require('./services/passport');
 // mongoose.createConnection(
 //   'mongodb://localhost/book'
 // );
-require('./models/db');
+//require('./models/db');
 const app = express();
 app.use(bodyParser.json());
 app.use(
