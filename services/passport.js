@@ -12,7 +12,7 @@ var userModel = mongoose.model('User');
 
     // used to deserialize the user
     passport.deserializeUser(function(id, done) {
-        User.findById(id, function(err, user) {
+        userModel.findById(id, function(err, user) {
             done(err, user);
         });
     });
@@ -21,7 +21,7 @@ var userModel = mongoose.model('User');
         clientSecret: keys.googleClientSecret,
         callbackURL: keys.callbackURL
     },
-    function(accessToken, refreshToken, profile, cb) {
+    function(accessToken, refreshToken, profile, done) {
             // var Bee = new userModel({ 
             //         googleId: profile.id
             // })
@@ -31,12 +31,17 @@ var userModel = mongoose.model('User');
             //         console.error(error);
             //     }
             // });
-
-        const Test = new userModel({googleId: profile.id})
-        Test.save(function (err) {
-            if (err) return handleError(err);
-            // saved!
-            })
-            
-    }
+            userModel.findOne({googleId: profile.id}).then(existingUser=>{
+                if(existingUser){
+                    console.log(existingUser);
+                    done(null, existingUser);
+                }else{
+                    const Test = new userModel({googleId: profile.id})
+                    Test.save(function (err) {
+                        if (err) return handleError(err);
+                        // saved!
+                    }).then(user => done(null, user));
+                }
+            });
+        }
     ));

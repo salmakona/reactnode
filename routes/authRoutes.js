@@ -15,7 +15,7 @@ module.exports = app => {
 
     app.get('/api/logout', (req, res) => {
       req.logout();
-      res.redirect('/');
+      res.redirect('http://localhost:5000');
     });
 
     app.get('/api/current_user', (req, res) => {
