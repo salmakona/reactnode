@@ -19,7 +19,8 @@ var userModel = mongoose.model('User');
     passport.use(new GoogleStrategy({
         clientID:keys.googleClientID,
         clientSecret: keys.googleClientSecret,
-        callbackURL: keys.callbackURL
+        callbackURL: keys.callbackURL,
+        proxy:true
     },
     function(accessToken, refreshToken, profile, done) {
             // var Bee = new userModel({ 
