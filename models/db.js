@@ -7,7 +7,7 @@ if (process.env.NODE_ENV === 'production') {
     mongoose.connect('mongodb://emily:emily@ds237660.mlab.com:37660/emily-prod');
 } else {
     // Connect to MongoDB on localhost:27017
-    mongoose.connect('mongodb://localhost:27017/book', { useMongoClient: true });
+    mongoose.connect('mongodb://localhost:27017/emily-prod', { useMongoClient: true });
 }
 
 
