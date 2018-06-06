@@ -8,9 +8,9 @@ class Header extends Component {
 		return(
 			<div className="container">
 				<nav>
-				      <a href="#" className="brand-logo">Logo</a>
-				      	<ul  className="right">
-					        <li><a href="#">Login with Google</a></li>
+				      <a href="" className="brand-logo">Logo</a>
+				      	<ul className="right">
+					        <li><a href="">Login with Google</a></li>
 				      </ul>
 				  </nav>
 			</div>
