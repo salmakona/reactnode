@@ -5,6 +5,7 @@ const bodyParser = require('body-parser');
 const cookieSession = require('cookie-session');
 var session      = require('express-session');
 const passport = require('passport');
+const cors = require('cors');
 require('./models/User');
 require('./services/passport');
 
@@ -31,12 +32,21 @@ app.use(passport.initialize());
 app.use(passport.session());
 
 
+// Add headers
+app.use(cors());
+app.options('*', cors());
+
 //authRoutes(app);
 require('./routes/authRoutes')(app);
 
 // const routes = express();
 // require('./routes/routes')
 //const PORT = process.env.PORT || 8080;
+
+
+
+
+
 app.listen(process.env.PORT || 8080, function(){
   console.log("Express server listening on port %d in %s mode", this.address().port, app.settings.env);
 });

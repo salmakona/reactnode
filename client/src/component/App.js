@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { BrowserRouter,Route } from 'react-router-dom';
 import {connect} from 'react-redux';
 import * as actions from '../actions';
-//import axios from 'axios';
+import axios from 'axios';
 import Header from './Header';
 const Dashboard =() =><h2>Dashboard</h2>
 const SurveyNew =() =><h2>SurveyNew</h2>
@@ -20,10 +20,11 @@ class App extends Component {
   // }
 
 	 handleClick () {
-    console.log('Success!')
-		//  axios.get('/api/current_user')
-    // .then(response => console.log(response))
+				console.log('Success!')
+			 axios.get('http://localhost:8080/api/test')
+			.then(response => console.log(response));
   }
+
 
 	render(){
 		 //const { records } = this.props;
@@ -44,6 +45,6 @@ class App extends Component {
 
 	    );
 	}
-}
+} 
 
 export default connect(null, actions)(App);
